@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "./Loading";
+import { Link } from "react-router-dom";
 
 const ListBooks = (props) => {
    const [books, setBooks] = useState(null);
@@ -27,6 +28,11 @@ const ListBooks = (props) => {
    }
    return (
       <div className="container my-5">
+         <div className="my-3 d-flex justify-content-end">
+            <Link to="/add-book" className="btn btn-primary">
+               Kitap ekle
+            </Link>
+         </div>
          <table className="table">
             <thead>
                <tr>

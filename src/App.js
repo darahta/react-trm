@@ -1,13 +1,16 @@
 import React from "react";
-import Header from "./components/Header";
-import ListBooks from "./components/ListBooks";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AddBook from "./pages/AddBook";
+import Home from "./pages/Home";
 
 function App() {
    return (
-      <div className="App">
-         <Header />
-         <ListBooks />
-      </div>
+      <BrowserRouter>
+         <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/add-book" element={<AddBook />} />
+         </Routes>
+      </BrowserRouter>
    );
 }
 
