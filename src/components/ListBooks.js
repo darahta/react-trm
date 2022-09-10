@@ -39,7 +39,9 @@ const ListBooks = (props) => {
                   <th scope="col">Kitap Adı</th>
                   <th scope="col">Yazar Adı</th>
                   <th scope="col">Kategori</th>
-                  <th scope="col">ISBN</th>
+                  <th className="d-flex justify-content-center" scope="col">
+                     ISBN
+                  </th>
                </tr>
             </thead>
             <tbody>
@@ -52,7 +54,9 @@ const ListBooks = (props) => {
                         <td>{book.name}</td>
                         <td>{book.author}</td>
                         <td>{category.name}</td>
-                        <td>{book.isbn}</td>
+                        <td className="d-flex justify-content-center">
+                           {book.isbn}
+                        </td>
                      </tr>
                   );
                })}

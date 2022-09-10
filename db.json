@@ -1,39 +1,40 @@
 {
-    "books":[
-        {
-            "id":1,
-            "name":"Yaban",
-            "author":"Yakup kadir karaosmanoğlu",
-            "isbn": "1111111111",
-            "categoryId":1
-        },
-        {
-            "id":2,
-            "name":"Yeraldından Notlar",
-            "author":"Dostoyevski",
-            "isbn": "11111111112",
-            "categoryId":2
-        },
-        {
-            "id":3,
-            "name":"Denemeler",
-            "author":"Montaigne",
-            "isbn": "11111111113",
-            "categoryId":3
-        }
-    ],
-    "categories":[
-        {
-            "id":1,
-            "name":"Roman"
-        },
-        {
-            "id":2,
-            "name":"Hikaye"
-        },
-        {
-            "id":3,
-            "name":"Deneme"
-        }
-    ]
+  "books": [
+    {
+      "id": 1,
+      "name": "Yaban",
+      "author": "Yakup kadir karaosmanoğlu",
+      "isbn": "1111111111",
+      "categoryId": "1"
+    },
+    {
+      "id": 2,
+      "name": "Yeraldından Notlar",
+      "author": "Dostoyevski",
+      "isbn": "11111111112",
+      "categoryId": "2"
+    },
+    {
+      "id": 3,
+      "name": "Denemeler",
+      "author": "Montaigne",
+      "isbn": "11111111113",
+      "categoryId": "3"
+    }
+   
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Roman"
+    },
+    {
+      "id": "2",
+      "name": "Hikaye"
+    },
+    {
+      "id": "3",
+      "name": "Deneme"
+    }
+  ]
 }
