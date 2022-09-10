@@ -15,9 +15,7 @@ const ListBooks = (props) => {
             axios
                .get("http://localhost:3004/categories")
                .then((resCat) => {
-                  setTimeout(() => {
-                     setCategories(resCat.data);
-                  }, 5000);
+                  setCategories(resCat.data);
                })
                .catch((err) => console.log("categories err", err));
          })
