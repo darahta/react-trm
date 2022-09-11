@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const ListBooks = (props) => {
    const [books, setBooks] = useState(null);
    const [categories, setCategories] = useState(null);
+   const [didUpdate, setDidUpdate] = useState(false);
 
    useEffect(() => {
       axios
@@ -21,8 +22,18 @@ const ListBooks = (props) => {
                .catch((err) => console.log("categories err", err));
          })
          .catch((err) => console.log("books err", err));
-   }, []);
+   }, [didUpdate]);
 
+   const kitapSil = (id) => {
+      console.log(`http://localhost:3004/books/${id}`);
+      axios
+         .delete(`http://localhost:3004/books/${id}`)
+         .then((res) => {
+            console.log("delete resp", res);
+            setDidUpdate(!didUpdate);
+         })
+         .catch((err) => console.log(err));
+   };
    if (books === null || categories === null) {
       return <Loading />;
    }
@@ -39,8 +50,11 @@ const ListBooks = (props) => {
                   <th scope="col">Kitap Adı</th>
                   <th scope="col">Yazar Adı</th>
                   <th scope="col">Kategori</th>
-                  <th className="d-flex justify-content-center" scope="col">
+                  <th className="text-center" scope="col">
                      ISBN
+                  </th>
+                  <th className="text-center" scope="col">
+                     İşlem
                   </th>
                </tr>
             </thead>
@@ -54,8 +68,22 @@ const ListBooks = (props) => {
                         <td>{book.name}</td>
                         <td>{book.author}</td>
                         <td>{category.name}</td>
-                        <td className="d-flex justify-content-center">
-                           {book.isbn}
+                        <td className="text-center">
+                           {book.isbn === "" ? "-" : book.isbn}
+                        </td>
+                        <td>
+                           <div
+                              className="btn-group d-flex justify-content-center"
+                              role="group"
+                           >
+                              <button
+                                 type="button"
+                                 className="btn btn-outline-danger btn-sm"
+                                 onClick={() => kitapSil(book.id)}
+                              >
+                                 Delete
+                              </button>
+                           </div>
                         </td>
                      </tr>
                   );
