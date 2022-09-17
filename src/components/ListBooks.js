@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
+import Modal from "./Modal";
 
 const ListBooks = (props) => {
    const [books, setBooks] = useState(null);
    const [categories, setCategories] = useState(null);
    const [didUpdate, setDidUpdate] = useState(false);
+   const [showModal, setShowModal] = useState(false);
+   const [silinecekKitap, setSilinecekKitap] = useState(null);
+   const [silinecekKitapIsmi, setSilinecekKitapIsmi] = useState("");
 
    useEffect(() => {
       axios
@@ -31,6 +35,7 @@ const ListBooks = (props) => {
          .then((res) => {
             console.log("delete resp", res);
             setDidUpdate(!didUpdate);
+            setShowModal(false);
          })
          .catch((err) => console.log(err));
    };
@@ -64,7 +69,7 @@ const ListBooks = (props) => {
                      (cat) => cat.id === book.categoryId
                   );
                   return (
-                     <tr>
+                     <tr key={book.id}>
                         <td>{book.name}</td>
                         <td>{book.author}</td>
                         <td>{category.name}</td>
@@ -79,10 +84,21 @@ const ListBooks = (props) => {
                               <button
                                  type="button"
                                  className="btn btn-outline-danger btn-sm"
-                                 onClick={() => kitapSil(book.id)}
+                                 onClick={() => {
+                                    setShowModal(true);
+                                    // kitapSil(book.id)
+                                    setSilinecekKitap(book.id);
+                                    setSilinecekKitapIsmi(book.name);
+                                 }}
                               >
                                  Delete
                               </button>
+                              <Link
+                                 to={`edit-book/${book.id}`}
+                                 className="btn btn-sm btn-outline-secondary"
+                              >
+                                 Edit
+                              </Link>
                            </div>
                         </td>
                      </tr>
@@ -90,6 +106,14 @@ const ListBooks = (props) => {
                })}
             </tbody>
          </table>
+         {showModal === true && (
+            <Modal
+               aciklama={`Silmek istediğinize emin misiniz?`}
+               title={silinecekKitapIsmi}
+               onConfirm={() => kitapSil(silinecekKitap)}
+               onCancel={() => setShowModal(false)}
+            />
+         )}
       </div>
    );
 };
