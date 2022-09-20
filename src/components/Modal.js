@@ -1,6 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const Modal = (props) => {
+   const uygulamaStatei = useSelector((state) => state);
+   console.log("modaldayım", uygulamaStatei);
    const { onCancel, onConfirm, title, aciklama } = props;
    return (
       <button

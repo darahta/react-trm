@@ -2,7 +2,7 @@
   "books": [
     {
       "id": 1,
-      "name": "Yaban",
+      "name": "Yabana",
       "author": "Yakup kadir karaosmanoğlu",
       "categoryId": "1",
       "isbn": "1111111111"
@@ -22,11 +22,18 @@
       "isbn": "11111111113"
     },
     {
-      "id": 1663410540292,
-      "name": "fdasf",
-      "author": "dff",
-      "isbn": "",
+      "id": 1663661346467,
+      "name": "kitap adı",
+      "author": "mehmet süm",
+      "isbn": "33",
       "categoryId": "1"
+    },
+    {
+      "id": 1663661356573,
+      "name": "telefon aaa",
+      "author": "aypaaa",
+      "categoryId": "2",
+      "isbn": ""
     }
   ],
   "categories": [

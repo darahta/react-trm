@@ -3,10 +3,14 @@ import axios from "axios";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
 import Modal from "./Modal";
+import { useSelector } from "react-redux";
 
 const ListBooks = (props) => {
+   const { categoriesState } = useSelector((state) => state);
+   console.log(categoriesState);
+
    const [books, setBooks] = useState(null);
-   const [categories, setCategories] = useState(null);
+   // const [categories, setCategories] = useState(null);
    const [didUpdate, setDidUpdate] = useState(false);
    const [showModal, setShowModal] = useState(false);
    const [silinecekKitap, setSilinecekKitap] = useState(null);
@@ -18,12 +22,12 @@ const ListBooks = (props) => {
          .then((resBook) => {
             console.log(resBook);
             setBooks(resBook.data);
-            axios
-               .get("http://localhost:3004/categories")
-               .then((resCat) => {
-                  setCategories(resCat.data);
-               })
-               .catch((err) => console.log("categories err", err));
+            // axios
+            //    .get("http://localhost:3004/categories")
+            //    .then((resCat) => {
+            //       setCategories(resCat.data);
+            //    })
+            //    .catch((err) => console.log("categories err", err));
          })
          .catch((err) => console.log("books err", err));
    }, [didUpdate]);
@@ -39,7 +43,7 @@ const ListBooks = (props) => {
          })
          .catch((err) => console.log(err));
    };
-   if (books === null || categories === null) {
+   if (books === null || categoriesState.success !== true) {
       return <Loading />;
    }
    return (
@@ -65,7 +69,7 @@ const ListBooks = (props) => {
             </thead>
             <tbody>
                {books.map((book) => {
-                  const category = categories.find(
+                  const category = categoriesState.categories.find(
                      (cat) => cat.id === book.categoryId
                   );
                   return (
