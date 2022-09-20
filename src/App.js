@@ -10,6 +10,7 @@ function App() {
    const dispatch = useDispatch();
 
    useEffect(() => {
+      //categories
       dispatch({ type: "FETCH_CATEGORIES_START" });
       axios
          .get("http://localhost:3004/categories")
@@ -20,6 +21,19 @@ function App() {
             dispatch({
                type: "FETCH_CATEGORIES-FAIL",
                payload: "Kategorileri çekerken bir hata oluştu",
+            });
+         });
+      //books
+      dispatch({ type: "FETCH_BOOKS_START" });
+      axios
+         .get("http://localhost:3004/books")
+         .then((res) => {
+            dispatch({ type: "FETCH_BOOKS_SUCCESS", payload: res.data });
+         })
+         .catch((err) => {
+            dispatch({
+               type: "FETCH_BOOKS_FAIL",
+               payload: "kitapları çekerken bir hata oluştu",
             });
          });
    }, []);
