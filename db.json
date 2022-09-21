@@ -25,28 +25,21 @@
       "id": 1663661346467,
       "name": "kitap adı",
       "author": "mehmet süm",
-      "isbn": "33",
-      "categoryId": "1"
+      "categoryId": "1",
+      "isbn": "33"
     },
     {
-      "id": 1663661356573,
-      "name": "telefon aaa",
-      "author": "aypaaa",
-      "categoryId": "2",
+      "id": 1663741218436,
+      "name": "fjaklfjdsffdsfs",
+      "author": "dsfdsafdfasfs",
+      "categoryId": "3",
       "isbn": ""
     },
     {
-      "id": 1663674804933,
-      "name": "fdfadsfdasfdsfdsffdf",
-      "author": "adsfadsf",
-      "categoryId": "1",
-      "isbn": ""
-    },
-    {
-      "id": 1663683715404,
-      "name": "dfadsf",
-      "author": "fdfs",
-      "categoryId": "1",
+      "id": 1663741409306,
+      "name": "telefon rehberi1",
+      "author": "telefoncu",
+      "categoryId": "3",
       "isbn": ""
     }
   ],
